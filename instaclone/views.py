@@ -5,7 +5,10 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
 # Create your views here.
-def index(request):
+# def index(request):
+#     return render(request, 'registration/login.html', {})
+
+def homepage(request):
     return render(request, 'instaclone/index.html', {})
 
 def registerUser(request):
@@ -16,7 +19,7 @@ def registerUser(request):
         if form.is_valid():
             form.save()
 
-            return redirect('loginuser')
+            return redirect('index')
 
     else:
         form=RegistrationForm()
@@ -36,7 +39,7 @@ def loginUser(request):
             if user is not None:
                 login(request, user)
 
-                return redirect('index')
+                return redirect('homepage')
 
             else:
                 messages.error(request, "Username or Password is incorrect")
