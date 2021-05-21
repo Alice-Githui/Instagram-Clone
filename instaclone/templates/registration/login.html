@@ -1,0 +1,39 @@
+{% extends 'registration/base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- Empty column -->
+        <div class="col-md-3"></div>
+        <!-- Login Form -->
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h4>Login User</h4>
+                </div>
+                <div class="panel-body">
+                    <form action="" , method="post">
+                        {% csrf_token %}
+                        <label for="username">Enter Username</label>
+                        <input type="text" name="username"> <br>
+                        <label for="password">Enter Password</label>
+                        <input type="password" name="password"><br>
+                        {% for message in messages %}
+                        {{message}}
+                        {% endfor %}
+                        <br>
+                        <input type="submit" value="Login">
+
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- Empty column -->
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{% endblock %}
