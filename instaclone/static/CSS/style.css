@@ -1,3 +1,62 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+#landing-page-container{
+    background-color: #f9f9f9;
+}
+
+.landing-page-format{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    margin-right: 200px;
+}
+
+.landing-page-image img{
+    float: right;
+}
+
+.landing-page-image img{
+    height: 600px;
+    width: 350px;
+    border-radius: 30px;
+    margin-right: 140px;
+}
+
+.landing-page-form {
+    position: absolute;
+    float: left;
+    margin-top: 7px;
+    font-size: 18px;
+    text-align: center;
+    margin-left: 600px;
+    background-color: white;
+    height: 600px;
+    width: 350px;
+    padding: 30px;
+    /* padding-top: 50px; */
+    border: 1px solid gainsboro;
+}
+
+.landing-page-form h4{
+    font-style: italic;
+    font-size: 24px;
+    padding-bottom: 30px;
+}
+
+.landing-page-form form{
+    padding-top: 30px;
+}
+.landing-create-account p{
+    padding-top: 60px;
+
+}
+
 h1{
     color: greenyellow;
 }

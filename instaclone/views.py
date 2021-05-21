@@ -47,7 +47,7 @@ def loginUser(request):
         else:
             messages.error(request, "Field is empty. Enter Username and Password")
 
-    title="Login User"
+    title="Instaclone.com"
     return render(request, 'registration/login.html', {"title":title})
 
 
