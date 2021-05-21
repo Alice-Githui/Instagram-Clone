@@ -56,6 +56,45 @@
     padding-top: 60px;
 
 }
+#registrationform{
+    background-color: #f9f9f9;
+}
+.registration{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    border: 1px solid gainsboro;
+    background-color: white;
+    margin: 30px 0px 30px 0px;
+}
+
+.registration-head h4{
+    font-style: italic;
+    font-size: 36px;
+}
+
+.registration-head p{
+    font-size: 12px;
+}
+
+.registration-form{
+    width: 90%;
+}
+
+/* .registration-form form{
+    width: 300px;
+} */
+
+.form-group{
+    padding: 30px;
+}
+
+.form-group p{
+    font-size: 14px;
+}
 
 h1{
     color: greenyellow;

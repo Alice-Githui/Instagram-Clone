@@ -2,25 +2,27 @@
 {% load bootstrap3 %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid" id="registrationform">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="panel">
-                <div class="panel-heading">
-                    <h3>Create New User</h3>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="registration">
+                <div class="registration-head">
+                    <h4>Instagram</h4>
+                    <p>Sign In to see photos and videos from your friends</p>
                 </div>
-                <div class="panel-body">
+                <br>
+                <div class="registration-form">
                     <form action="" , method="post">
                         {% csrf_token %}
                         <!-- {% bootstrap_form form %}         -->
-                        <label for="username">Enter Username</label>
+                        <label for="username">Input Username:</label><br>
                         {{form.username}}<br>
-                        <label for="email">Enter Email Address</label>
+                        <label for="email">Input Email Address:</label><br>
                         {{form.email}}<br>
-                        <label for="password1">Enter Password</label>
+                        <label for="password1">Enter Password:</label><br>
                         {{form.password1}}<br>
-                        <label for="password2">Confirm Password</label>
+                        <label for="password2">Confirm Password:</label><br>
                         {{form.password2}}<br>
 
                         {% if form.errors %}
@@ -35,16 +37,21 @@
                         {% endif %} <br><br>
                        
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+                            <input type="submit" class="btn btn-success btn-block" value="Sign Up">
+                            <br>
+                            <p>By signing up, you agree to our <strong><em>terms, data and privacy policies</em></strong></p>
                         </div>
     
                     </form>
+                    <div class="registration-login">
+                        <p>Have an account?<a href="{% url 'index' %}">Login</a></p>
+                    </div>
                     
                 </div>
             </div>
 
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-4"></div>
     </div>
 
 </div>
