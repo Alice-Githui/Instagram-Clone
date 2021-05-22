@@ -1,13 +1,15 @@
 {% extends 'instaclone/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
 {% block content %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2"></div>
         {% for image in images %}
         <div class="col-md-7">
-            
-            <img src="{{image.image.url}}" alt="{{image.image_name}}">
-
+            <div>
+                <img src="{{image.image.url}}" alt="{{image.image_name}}">
+            </div>
         </div>
         {% endfor %}
         <div class="col-md-3"></div>

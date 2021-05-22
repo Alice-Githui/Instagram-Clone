@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import RegistrationForm, NewImageForm
+from .forms import RegistrationForm, NewImageForm, ImageCommentForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .emails import send_welcome_email
@@ -74,3 +74,21 @@ def new_image(request):
         form=NewImageForm()
     return render(request, 'instaclone/new_image.html', {"form":form})
 
+@login_required
+def new_comment(request):
+    form=ImageCommentForm()
+    all_comments=Comment.objects.all()
+    if request.method == "POST":
+        form=ImageCommentForm(request.POST)
+
+        if form.is_valid():
+            comment=form.cleaned_data['comment']
+            comment=ImageCommentForm(comment=comment)
+            comment.save()
+
+            return redirect('homepage')
+
+    else:
+        form=ImageCommentForm()
+ 
+    return render(request, 'instaclone/oneimage.html', {"form":form, "all_comments":all_comments})
