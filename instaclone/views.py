@@ -74,23 +74,23 @@ def new_image(request):
         form=NewImageForm()
     return render(request, 'instaclone/new_image.html', {"form":form})
 
+
 @login_required
-def new_comment(request):
-    form=ImageCommentForm()
+def viewPhoto(request, pk):
+    image=Image.objects.get(id=pk)  
+    form=ImageCommentForm() 
     all_comments=Comment.objects.all()
     print(all_comments)
     if request.method == "POST":
         form=ImageCommentForm(request.POST)
 
         if form.is_valid():
-            comment=form.cleaned_data['comment']
-
-            comment=ImageCommentForm(comment=comment)            
-            comment.save()
+            form.save()
 
             return redirect('homepage')
 
     else:
         form=ImageCommentForm()
- 
-    return render(request, 'instaclone/oneimage.html', {"form":form, "all_comments":all_comments})
+    return render(request, 'instaclone/oneimage.html', {"image": image, "form":form, "all_comments": all_comments})
+
+

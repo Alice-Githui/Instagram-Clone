@@ -7,9 +7,13 @@
         <div class="col-md-2"></div>
 
         <div class="col-md-7">
+                     
             {% for image in images %}
+            <div>
+                <p>Profile: {{image.profile}}</p>
+            </div>   
             <div class="viewimage">
-                <img src="{{image.image.url}}" alt="{{image.image_name}}">
+                <a href="{% url 'viewphoto' image.id %}"><img src="{{image.image.url}}" alt="{{image.image_name}}" class="img-responsive"></a>
             </div>
             <div>
                 {{image.caption}}

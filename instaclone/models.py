@@ -31,6 +31,7 @@ class Comment(models.Model):
     def delete_comment(self):
         self.delete()
 
+
 class Image(models.Model):
     image=CloudinaryField('image')
     image_name=models.CharField(max_length=80)

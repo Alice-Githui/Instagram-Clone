@@ -3,16 +3,27 @@
 
 {% block content %}
 <div>
-    {% for comment in all_comments %}
-    {{comment.comment}}
-    {% endfor %}
-    <form method="post" enctype="multipart/form-data" action="{% url 'comments' %}">
-        {% csrf_token %}
-        {% bootstrap_form form %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{image.image.url}}" alt="{{image.image_name}}">
+            </div>
+            <div class="col-md-6">
+                {% for comment in all_comments %}
+                {{comment.comment}}
+                {% endfor %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
 
-        <input value="Submit" type="submit" class="btn btn-success btn-block btn-lg">
+                    <input value="Submit" type="submit" class="btn btn-success btn-block btn-lg">
 
-    </form>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}
