@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import RegistrationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from .emails import send_welcome_email
 
 # Create your views here.
 # def index(request):

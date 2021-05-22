@@ -12,19 +12,19 @@
                     <p>Sign In to see photos and videos from your friends</p>
                 </div>
                 <br>
-                <div class="registration-form">
+                <div class="registration-form form-group">
                     <form action="" , method="post">
                         {% csrf_token %}
                         <!-- {% bootstrap_form form %}         -->
-                        <label for="username">Input Username:</label><br>
-                        {{form.username}}<br>
-                        <label for="email">Input Email Address:</label><br>
-                        {{form.email}}<br>
+                        <!-- <label for="username">Input Username:</label> -->
+                        <input class="form-control" value="Username" {{form.username}}> 
+                        <!-- <label for="email">Input Email Address:</label> -->
+                        <input class="form-control" value="Email" {{form.email}}>
                         <label for="password1">Enter Password:</label><br>
-                        {{form.password1}}<br>
-                        <label for="password2">Confirm Password:</label><br>
-                        {{form.password2}}<br>
-
+                        <input class="form-control" {{form.password1}}>
+                        <label for="password2">Confirm Password:</label><br>   
+                        <input class="form-control" {{form.password2}}>                     
+                        <br>
                         {% if form.errors %}
                         {% for field in form %}
                             {% for error in field.errors %}

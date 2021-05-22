@@ -11,11 +11,23 @@ class Profile(models.Model):
     def __str__(self):
         return self.bio
 
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
 class Comment(models.Model):
     comment=models.CharField(max_length=500)
 
     def __str__(self):
         return self.comment
+
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
 
 class Image(models.Model):
     image=CloudinaryField('image')
@@ -27,5 +39,11 @@ class Image(models.Model):
 
     def __str__(self):
         return self.caption
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
 
 
