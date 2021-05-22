@@ -78,6 +78,12 @@ class ImageTestClass(TestCase):
         self.imageone.delete_image()
         self.assertEqual(len(images), 0)
 
+    def test_update_caption(self):
+        self.imageone.save_image()
+    
+        Image.objects.filter(caption="Man holding phone to log in to IG").update(caption="Man logged into IG")
+        self.assertTrue(Image.objects.get(caption="Man logged into IG"))
+
 
     
 

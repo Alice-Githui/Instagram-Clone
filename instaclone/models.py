@@ -46,4 +46,8 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
+    def update_caption(self,caption):
+        self.update()
+
+
 
