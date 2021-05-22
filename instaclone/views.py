@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import RegistrationForm
+from .forms import RegistrationForm, NewImageForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .emails import send_welcome_email
 from .models import Image, Comment, Profile
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 # def index(request):
 #     return render(request, 'registration/login.html', {})
@@ -56,4 +57,20 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return redirect('index')
+
+@login_required
+def new_image(request):
+    current_user = request.user
+    if request.method=="POST":
+        form=NewImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            image=form.save(commit=False)
+            image.profile=current_user
+            image.save()
+
+        return redirect('homepage')
+
+    else:
+        form=NewImageForm()
+    return render(request, 'instaclone/new_image.html', {"form":form})
 

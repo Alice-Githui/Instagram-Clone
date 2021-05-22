@@ -1,0 +1,33 @@
+{% load bootstrap3 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload New Image</title>
+    {{form.media}}
+
+    {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'CSS/styles.css'%}">
+
+    {%endblock%}
+</head>
+<body>
+    <form action="{% url 'uploadimage' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% bootstrap_form form %}
+
+        <input value="Post" type="submit" class="btn btn-danger btn-lg">
+
+    </form>
+
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
+    {% endblock %}    
+</body>
+</html>

@@ -34,9 +34,9 @@ class Comment(models.Model):
 class Image(models.Model):
     image=CloudinaryField('image')
     image_name=models.CharField(max_length=80)
-    caption=HTMLField()
+    caption=models.TextField()
     profile=models.ForeignKey(User, on_delete=models.CASCADE)
-    comments=models.ForeignKey(Comment, on_delete=models.CASCADE)
+    comments=models.TextField()
     likes=models.IntegerField(default=0)
 
     def __str__(self):
