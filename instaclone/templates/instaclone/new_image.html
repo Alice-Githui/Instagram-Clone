@@ -16,14 +16,22 @@
     {%endblock%}
 </head>
 <body>
-    <form action="{% url 'uploadimage' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-
-        {% bootstrap_form form %}
-
-        <input value="Post" type="submit" class="btn btn-danger btn-lg">
-
-    </form>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form action="{% url 'uploadimage' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+            
+                    {% bootstrap_form form %}
+            
+                    <input value="Post" type="submit" class="btn btn-danger btn-lg btn-block">
+            
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
 
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
