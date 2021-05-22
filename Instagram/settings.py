@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'instaclone.apps.InstacloneConfig',
     'cloudinary',
-    'bootstrap3'
+    'bootstrap3',
+    'tinymce'
 ]
 
 MIDDLEWARE = [

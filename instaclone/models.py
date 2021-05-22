@@ -1,5 +1,7 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 # Create your models here.
 
@@ -32,8 +34,8 @@ class Comment(models.Model):
 class Image(models.Model):
     image=CloudinaryField('image')
     image_name=models.CharField(max_length=80)
-    caption=models.TextField()
-    profile=models.ForeignKey(Profile, on_delete=models.CASCADE)
+    caption=HTMLField()
+    profile=models.ForeignKey(User, on_delete=models.CASCADE)
     comments=models.ForeignKey(Comment, on_delete=models.CASCADE)
     likes=models.IntegerField(default=0)
 
@@ -46,8 +48,8 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    def update_caption(self,caption):
-        self.update()
+    def update_caption(self,caption, new_caption):
+        self.save(caption)
 
 
 

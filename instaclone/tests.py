@@ -80,7 +80,7 @@ class ImageTestClass(TestCase):
 
     def test_update_caption(self):
         self.imageone.save_image()
-    
+        Image.update_caption(Image, caption="Man holding phone to log in to IG", new_caption="Man logged into IG")    
         Image.objects.filter(caption="Man holding phone to log in to IG").update(caption="Man logged into IG")
         self.assertTrue(Image.objects.get(caption="Man logged into IG"))
 

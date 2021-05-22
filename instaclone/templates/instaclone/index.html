@@ -1,4 +1,16 @@
 {% extends 'instaclone/base.html' %}
 {% block content %}
-<h1>Welcome to the IG clone</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        {% for image in images %}
+        <div class="col-md-7">
+            
+            <img src="{{image.image.url}}" alt="{{image.image_name}}">
+
+        </div>
+        {% endfor %}
+        <div class="col-md-3"></div>
+    </div>
+</div>
 {%endblock%}

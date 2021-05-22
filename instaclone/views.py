@@ -4,13 +4,14 @@ from .forms import RegistrationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .emails import send_welcome_email
-
+from .models import Image, Comment, Profile
 # Create your views here.
 # def index(request):
 #     return render(request, 'registration/login.html', {})
 
 def homepage(request):
-    return render(request, 'instaclone/index.html', {})
+    images=Image.objects.all()
+    return render(request, 'instaclone/index.html', {"images": images})
 
 def registerUser(request):
     form=RegistrationForm()
