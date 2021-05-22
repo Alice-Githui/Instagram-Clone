@@ -96,3 +96,7 @@
 h1{
     color: greenyellow;
 }
+.viewimage img{
+    object-fit: cover;
+    width: 100%;
+}

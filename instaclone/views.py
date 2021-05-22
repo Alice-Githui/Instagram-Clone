@@ -78,12 +78,14 @@ def new_image(request):
 def new_comment(request):
     form=ImageCommentForm()
     all_comments=Comment.objects.all()
+    print(all_comments)
     if request.method == "POST":
         form=ImageCommentForm(request.POST)
 
         if form.is_valid():
             comment=form.cleaned_data['comment']
-            comment=ImageCommentForm(comment=comment)
+
+            comment=ImageCommentForm(comment=comment)            
             comment.save()
 
             return redirect('homepage')
