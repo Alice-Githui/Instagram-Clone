@@ -13,8 +13,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: white;">
                     <div>
-                        <img src="{{image.profile.profile.profile_pic.url}}" id="profilepic" class="">
-                        <p>Profile: <a href="{% url 'userprofile' user.id %}">{{image.profile.profile.user}}</a></p>
+                        {% if image.profile.profile.profile_pic.url %}
+                            <img src="{{image.profile.profile.profile_pic.url}}" class="profilepic" class="">
+                           {% else %}
+                           <img src="../../static/Images/altprofilepic.jpg" alt="phone displaying the name instagram on a blue screen" class="profilepic"> 
+                        {% endif %}
+                        <p>Profile Name: <a href="{% url 'userprofile' user.id %}">{{image.profile.profile.user}}</a></p>
 
                     </div>
                 </div>
