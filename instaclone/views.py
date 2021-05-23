@@ -110,6 +110,7 @@ def viewPhoto(request, pk):
 def profile_view(request, pk):
     form=UpdateUserProfile()
     user=Profile.objects.filter(id=pk)
+    # print(user)
 
     if request.method =="POST":
         form=UpdateUserProfile(request.POST)

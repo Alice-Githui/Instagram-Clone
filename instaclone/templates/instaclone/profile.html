@@ -9,9 +9,9 @@
             {% for user in user %}
             {% if user.profile_pic.url %}
             <p>Profile Picture:</p>
-            <img src="{{user.profile_pic.url}}">
+            <img src="{{user.profile_pic.url}}" class="profilepic">
             {% else %}
-            <p>No Profile Picture</p>
+            <img src="../../static/Images/altprofilepic.jpg" class="profilepic"> 
             <p>{{user.bio}}</p> 
             {% endif %}
             {% endfor %}

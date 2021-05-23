@@ -18,7 +18,7 @@
                            {% else %}
                            <img src="../../static/Images/altprofilepic.jpg" alt="phone displaying the name instagram on a blue screen" class="profilepic"> 
                         {% endif %}
-                        <p>Profile Name: <a href="{% url 'userprofile' user.id %}">{{image.profile.profile.user}}</a></p>
+                        <p>Profile Name: <a href="{% url 'userprofile' image.profile.profile.id %}">{{image.profile.profile.user}}</a></p>
 
                     </div>
                 </div>
