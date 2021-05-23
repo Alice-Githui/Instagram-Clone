@@ -106,3 +106,9 @@ def viewPhoto(request, pk):
         form=ImageCommentForm()
     return render(request, 'instaclone/oneimage.html', {"image": image, "form":form, "all_comments": all_comments,"total_likes": total_likes})
 
+@login_required
+def profile_view(request, pk):
+    user=Profile.objects.filter(id=pk)
+
+    return render(request, "instaclone/profile.html", {"user":user})
+

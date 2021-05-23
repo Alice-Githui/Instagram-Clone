@@ -1,0 +1,23 @@
+{% extends 'instaclone/base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            {% for user in user %}
+            <p>Profile Picture:</p>
+            <img src="{{user.profile_pic.url}}">
+            <p>{{user.bio}}</p>
+
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
+            <!-- User's Images -->
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+{% endblock %}

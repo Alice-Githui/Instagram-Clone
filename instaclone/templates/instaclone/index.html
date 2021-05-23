@@ -13,7 +13,7 @@
             {% for image in images %}
             <div>
                 <img src="{{image.profile.profile.profile_pic.url}}" id="profilepic" class="">
-                <p>Profile: <a href="#">{{image.profile.profile.user}}</a></p>
+                <p>Profile: <a href="{% url 'userprofile' user.id %}">{{image.profile.profile.user}}</a></p>
                
             </div>  
             <div class="viewimage">
