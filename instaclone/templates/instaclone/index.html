@@ -3,22 +3,25 @@
 {% load static %}
 {% block content %}
 {% include 'navbar.html' %}
-<div class="container-fluid" style="background-color: #f9f9f9;">
 
+<div class="container-fluid" style="background-color: #f9f9f9;">
     <div class="row">
         <div class="col-md-2"></div>
 
         <div class="col-md-7">
             {% for image in images %}
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-images">
                 <div class="panel-heading" style="background-color: white;">
                     <div>
                         {% if image.profile.profile.profile_pic.url %}
-                            <img src="{{image.profile.profile.profile_pic.url}}" class="profilepic" class="">
-                           {% else %}
-                           <img src="../../static/Images/altprofilepic.jpg" alt="phone displaying the name instagram on a blue screen" class="profilepic"> 
+                        <img src="{{image.profile.profile.profile_pic.url}}" class="profilepic" class="">
+                        {% else %}
+                        <img src="../../static/Images/altprofilepic.jpg"
+                            alt="phone displaying the name instagram on a blue screen" class="profilepic">
                         {% endif %}
-                        <p>Profile Name: <a href="{% url 'userprofile' image.profile.profile.id %}">{{image.profile.profile.user}}</a></p>
+                        <p>Profile Name: <a
+                                href="{% url 'userprofile' image.profile.profile.id %}">{{image.profile.profile.user}}</a>
+                        </p>
 
                     </div>
                 </div>
@@ -39,9 +42,10 @@
 
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3 otherprofiles">
             <p>OTHER USER PROFILES</p>
             {% for user in users %}
+            <img src="{{user.profile.id}}" alt="{{user.profile.bio}}">
             <p>{{user.user}}</p>
             {% endfor %}
         </div>
