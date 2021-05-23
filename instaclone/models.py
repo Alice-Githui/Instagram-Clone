@@ -21,6 +21,7 @@ class Profile(models.Model):
         return self.following.count()
 
 
+
 class Comment(models.Model):
     comment=models.CharField(max_length=500)
 
@@ -57,6 +58,12 @@ class Image(models.Model):
 
     def update_caption(self,caption, new_caption):
         self.save(caption)
+
+    def search_by_user(profile):
+        images=Image.objects.filter(profile=profile)
+        # print(images)
+        return images
+
 
 class ImageLikes(models.Model):
     image=models.ForeignKey(Image, on_delete=models.CASCADE)

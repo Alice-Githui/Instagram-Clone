@@ -141,4 +141,16 @@ def editpage(request, pk):
 
     return render(request, "instaclone/editprofile.html", {"form":form, "user":user})
 
+def search_profile(request):
+    if 'article' in request.GET and request.GET['article']:
+        profile=request.GET.get('article')
+        searched_profile=Image.search_by_user(profile)
+        message=f"{profile}"
+
+        return render(request, "instaclone/search.html", {"message":message, "articles":searched_profile})
+
+    else:
+        message="You have not searched for any profile"
+        return render(request, "instaclone/search.html", {"message":message})
+
 
