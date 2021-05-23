@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 
 def homepage(request):
     images=Image.objects.all()
-    users=User.objects.all()
+    users=Profile.objects.all()
     print(users)
     
     return render(request, 'instaclone/index.html', {"images":images, "users":users})
