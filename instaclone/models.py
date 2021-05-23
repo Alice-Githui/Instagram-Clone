@@ -52,5 +52,9 @@ class Image(models.Model):
     def update_caption(self,caption, new_caption):
         self.save(caption)
 
+class ImageLikes(models.Model):
+    image=models.ForeignKey(Image, on_delete=models.CASCADE)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+
 
 
