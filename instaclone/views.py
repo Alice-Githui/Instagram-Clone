@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse_lazy, reverse
 from .forms import RegistrationForm, NewImageForm, ImageCommentForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
@@ -12,6 +13,8 @@ from django.contrib.auth.decorators import login_required
 
 def homepage(request):
     images=Image.objects.all()
+    # likesonimage=get_object_or_404(Image, id=pk)
+    # total_likes=likesonimage.total_likes()
     return render(request, 'instaclone/index.html', {"images": images})
 
 def registerUser(request):
@@ -74,12 +77,22 @@ def new_image(request):
         form=NewImageForm()
     return render(request, 'instaclone/new_image.html', {"form":form})
 
+def likes(request, pk):
+    imagelike=get_object_or_404(Image, id=request.POST.get('likebutton'))
+    imagelike.likes.add(request.user)
+    return redirect('homepage')
+
 
 @login_required
 def viewPhoto(request, pk):
     image=Image.objects.get(id=pk)  
-    form=ImageCommentForm() 
-    all_comments=Comment.objects.all()
+    form=ImageCommentForm()
+
+    all_comments=Comment.objects.all() 
+
+    likesonimage=get_object_or_404(Image, id=pk)
+    total_likes=likesonimage.total_likes()
+   
     print(all_comments)
     if request.method == "POST":
         form=ImageCommentForm(request.POST)
@@ -91,6 +104,6 @@ def viewPhoto(request, pk):
 
     else:
         form=ImageCommentForm()
-    return render(request, 'instaclone/oneimage.html', {"image": image, "form":form, "all_comments": all_comments})
+    return render(request, 'instaclone/oneimage.html', {"image": image, "form":form, "all_comments": all_comments,"total_likes": total_likes})
 
 

@@ -7,5 +7,6 @@ urlpatterns=[
     path('register/', views.registerUser, name="registeruser"),
     path('uploadimage/', views.new_image, name="uploadimage"),
     path('viewimage/<int:pk>/', views.viewPhoto, name="viewphoto"),
+    path('likes/<int:pk>/', views.likes, name="likes"),
     path('logout/', views.logoutUser, name="logout")
 ]

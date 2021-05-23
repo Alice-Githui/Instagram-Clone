@@ -8,6 +8,7 @@
             <div class="col-md-6">
                 <img src="{{image.image.url}}" alt="{{image.image_name}}">
             </div>
+            
             <div class="col-md-6">
                 {% for comment in all_comments %}
                 {{comment.comment}}
@@ -19,6 +20,13 @@
                     <input value="Submit" type="submit" class="btn btn-success btn-block btn-lg">
 
                 </form>
+                <div>
+                    <form method="POST" action="{% url 'likes' image.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" name="likebutton" value="{{image.id}}"><a href="#"><i class="fa fa-heart"></i></a></button> {{total_likes}}
+                    </form>
+                    
+                </div> 
             </div>
 
         </div>

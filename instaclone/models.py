@@ -38,7 +38,10 @@ class Image(models.Model):
     caption=models.TextField()
     profile=models.ForeignKey(User, on_delete=models.CASCADE)
     comments=models.TextField()
-    likes=models.IntegerField(default=0)
+    likes=models.ManyToManyField(User, related_name="image_posts")
+
+    def total_likes(self):
+        return self.likes.count()
 
     def __str__(self):
         return self.caption
@@ -55,6 +58,9 @@ class Image(models.Model):
 class ImageLikes(models.Model):
     image=models.ForeignKey(Image, on_delete=models.CASCADE)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user
 
 
 
