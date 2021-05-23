@@ -2,21 +2,27 @@
 {% load bootstrap3 %}
 
 {% block content %}
-<div>
-    <div class="container">
-        <div class="row">
+{% include 'navbar.html' %}
+
+<div class="container-fluid" id="oneimagepage">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 oneimage">
             <div class="row">
                 <img src="{{image.image.url}}" alt="{{image.image_name}}">
             </div>
-            
-            <div class="row">
+            <br>
+            <br>
+
+            <div class="row imagecontent">
                 <div>
-                    <form method="POST" action="{% url 'likes' image.pk %}">
+                    <form method="POST" action="{% url 'likes' image.pk %}" class="likesform">
                         {% csrf_token %}
-                        <button type="submit" name="likebutton" value="{{image.id}}"><a href="#"><i class="fa fa-heart"></i></a></button> {{total_likes}}
+                        <button type="submit" name="likebutton" value="{{image.id}}"><a href="#"><i
+                                    class="fa fa-heart"></i></a></button> {{total_likes}}
                     </form>
-                    
-                </div> 
+
+                </div>
                 {% for comment in all_comments %}
                 {{comment.comment}}
                 {% endfor %}
@@ -24,15 +30,17 @@
                     {% csrf_token %}
                     {% bootstrap_form form %}
 
-                    <input value="Submit" type="submit" class="btn btn-success btn-block btn-lg">
+                    <input value="Submit" type="submit" class="btn btn-block btn-lg">
 
                 </form>
-              
+
             </div>
 
         </div>
+        <div class="col-md-2"></div>
     </div>
 
 </div>
+
 
 {% endblock %}

@@ -185,3 +185,31 @@ h1{
     border: 2px solid gainsboro;
     padding: 30px 20px 0px 20px;
 }
+
+.oneimage{
+    margin: 30px 0px;
+    height: 80%;
+    border: 2px solid gainsboro;
+}
+
+.oneimage img{
+    object-fit: cover;
+    width: 100%;
+}
+
+.likesform{
+    font-size: 30px;
+}
+
+.likesform button a{
+    color: red;
+    border: 0px;
+}
+
+#oneimagepage{
+    background-color: #f9f9f9;
+}
+
+.imagecontent{
+    padding: 0px 30px 30px 30px;
+}
