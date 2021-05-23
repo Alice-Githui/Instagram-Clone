@@ -20,16 +20,19 @@
             </div>
             <div class="col-md-8">
                 <div>
-                    <form method="POST" action=" ">
+                    {% for user in user %}
+                    <form method="POST" action="{% url 'followers' user.pk %}">
                         {% csrf_token %}
                         <button type="submit" name="follow" value="{{user.id}}">Follow</button>
                         <br>
                         {{total_followers}} - followers
-                    </form>                    
+                    </form>  
+                    {% endfor %}                  
                 </div>
                 <div>
                     {% for user in user %}
                     <button class="btn btn success"><a href="{% url 'editprofile' user.id %}">Edit Profile</a></button>
+                    
                     {% endfor %}
                 </div>
             </div>
