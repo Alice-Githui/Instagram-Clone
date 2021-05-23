@@ -87,8 +87,8 @@ def likes(request, pk):
 def viewPhoto(request, pk):
     image=Image.objects.get(id=pk)  
     form=ImageCommentForm()
-
-    all_comments=Comment.objects.all() 
+    
+    all_comments=Comment.objects.filter(id=pk).all()
 
     likesonimage=get_object_or_404(Image, id=pk)
     total_likes=likesonimage.total_likes()

@@ -13,7 +13,7 @@
                 {% for comment in all_comments %}
                 {{comment.comment}}
                 {% endfor %}
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data" action="{% url 'viewphoto' image.pk %}">
                     {% csrf_token %}
                     {% bootstrap_form form %}
 
