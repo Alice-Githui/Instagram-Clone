@@ -152,3 +152,21 @@ h1{
 .viewimage a img{
     object-fit: cover;
 }
+
+.editprofilepage{
+    background-color: #f9f9f9;
+    height: 100vh;
+}
+
+.editprofile{
+   background-color: white;
+   padding: 60px;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   align-items: center;
+   justify-content: center;
+   height: 80vh;
+   border: 2px solid gainsboro;
+   margin: 30px;
+}
