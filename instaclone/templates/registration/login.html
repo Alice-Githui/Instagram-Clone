@@ -11,28 +11,33 @@
             <div>
                 <div class="landing-page-format">
                     <div class="landing-page-image">
-                        <img src="../../static/Images/loginlanding.jpg" href="man using a smartphone with finger hovering over the Instagram app">
+                        <img src="../../static/Images/loginlanding.jpg"
+                            href="man using a smartphone with finger hovering over the Instagram app">
                     </div>
                     <div class="landing-page-form">
                         <h4>Instagram</h4>
-                        <form action="" , method="post">
-                            {% csrf_token %}
-                            <label for="username">Enter Username</label>
-                            <input type="text" name="username"> <br>
-                            <label for="password">Input password</label>
-                            <input type="password" name="password"><br>
-                            {% for message in messages %}
-                            {{message}}
-                            {% endfor %}
-                            <br>
-                            <input type="submit" value="Login" class="btn btn-success btn-block">    
-                        </form>
+                        <div class="form-group">
+                            <form action="" , method="post" class="loginform">
+                                {% csrf_token %}
+                                <label for="username">Enter Username:</label>
+                                <input type="text" name="username" class="form-control">
+                                <br>
+                                <label for="password">Input password:</label>
+                                <input type="password" name="password" class="form-control">
+                                {% for message in messages %}
+                                {{message}}
+                                {% endfor %}
+                                <br>
+                                <input type="submit" value="Login" class="btn btn-success btn-block">
+                            </form>
+
+                        </div>
+
                         <br>
                         <div class="landing-create-account">
                             <p>Don't have an account?<a href="{% url 'registeruser'%}">Sign Up</a></p>
                         </div>
-                    </div>   
-                   v>              
+                    </div>
 
                 </div>
             </div>

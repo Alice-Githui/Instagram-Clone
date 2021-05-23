@@ -225,3 +225,12 @@ h1{
 #profilepagedetails{
     margin-top: 30px;
 }
+
+.regform label{
+    width: 100%;
+    position: relative;
+}
+
+.regform label input{
+    border: none;
+}

@@ -8,22 +8,26 @@
         <div class="col-md-4">
             <div class="registration">
                 <div class="registration-head">
-                    <h4>Instagram</h4>
+                    <h4>Instaclone</h4>
                     <p>Sign In to see photos and videos from your friends</p>
                 </div>
                 <br>
                 <div class="registration-form form-group">
-                    <form action="" , method="post">
+                    <form action="" , method="post" class="regform">
                         {% csrf_token %}
                         <!-- {% bootstrap_form form %}         -->
-                        <!-- <label for="username">Input Username:</label> -->
-                        <input class="form-control" value="Username" {{form.username}}> 
-                        <!-- <label for="email">Input Email Address:</label> -->
-                        <input class="form-control" value="Email" {{form.email}}>
-                        <label for="password1">Enter Password:</label><br>
-                        <input class="form-control" {{form.password1}}>
-                        <label for="password2">Confirm Password:</label><br>   
-                        <input class="form-control" {{form.password2}}>                     
+                        <label for="username" class="form-control">Username:
+                        {{form.username}}
+                        </label>
+                        <label for="email" class="form-control">Input Email Address:
+                        {{form.email}}
+                        </label>
+                        <label for="password1" class="form-control">Enter Password:
+                        {{form.password1}}
+                        </label>
+                        <label for="password2" class="form-control">Confirm Password: 
+                        {{form.password2}}   
+                        </label>                  
                         <br>
                         {% if form.errors %}
                         {% for field in form %}
@@ -34,7 +38,7 @@
                         {% for error in form.non_field_errors %}
                             {{ error|escape }}
                         {% endfor %}
-                        {% endif %} <br><br>
+                        {% endif %} <br>
                        
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block" value="Sign Up">
