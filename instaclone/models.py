@@ -8,9 +8,18 @@ class Profile(models.Model):
     user=models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio=models.CharField(max_length=450)
     profile_pic=CloudinaryField('image')
+    following=models.ManyToManyField(User, related_name="following")
+    followers=models.ManyToManyField(User, related_name="followers")
 
     def __str__(self):
         return str(self.user)
+
+    def total_followers(self):
+        return self.followers.count()
+
+    def total_following(self):
+        return self.following.count()
+
 
 class Comment(models.Model):
     comment=models.CharField(max_length=500)
@@ -32,17 +41,10 @@ class Image(models.Model):
     profile=models.ForeignKey(User, on_delete=models.CASCADE)
     comments=models.TextField()
     likes=models.ManyToManyField(User, related_name="image_posts")
-    following=models.ManyToManyField(User, related_name="following")
-    followers=models.ManyToManyField(User, related_name="followers")
+   
 
     def total_likes(self):
         return self.likes.count()
-
-    def total_followers(self):
-        return self.followers.count()
-
-    def total_following(self):
-        return self.following.count()
 
     def __str__(self):
         return self.caption

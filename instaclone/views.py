@@ -83,6 +83,10 @@ def likes(request, pk):
     imagelike.likes.add(request.user)
     return redirect('homepage')
 
+def followers(request, pk):
+    follow=get_object_or_404(Profile, id=request.POST.get('follow'))
+    follow.followers.add(request.user)
+    return redirect('homepage')
 
 @login_required
 def viewPhoto(request, pk):
@@ -108,10 +112,21 @@ def viewPhoto(request, pk):
 
 @login_required
 def profile_view(request, pk):
-    form=UpdateUserProfile()
     user=Profile.objects.filter(id=pk)
     images=Image.objects.filter(profile_id=pk)
     # print(user)
+
+    user_followers=get_object_or_404(Profile, id=pk)
+    total_followers=user_followers.total_followers()
+    
+
+    return render(request, "instaclone/profile.html", {"user":user,"images":images, "total_followers":total_followers})
+
+@login_required
+def editpage(request, pk):
+    form=UpdateUserProfile()
+    user=Profile.objects.filter(id=pk)
+    print(user)
 
     if request.method =="POST":
         form=UpdateUserProfile(request.POST)
@@ -123,7 +138,7 @@ def profile_view(request, pk):
 
     else:
         form=UpdateUserProfile()
-    
 
-    return render(request, "instaclone/profile.html", {"user":user, "form":form, "images":images})
+    return render(request, "instaclone/editprofile.html", {"form":form, "user":user})
+
 

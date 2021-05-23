@@ -7,15 +7,33 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            {% for user in user %}
-            {% if user.profile_pic.url %}
-            <img src="{{user.profile_pic.url}}" class="profilepic">
-            {% else %}
-            <img src="../../static/Images/altprofilepic.jpg" class="profilepic">
-            {% endif %}
-            <p>{{user.bio}}</p>
+            <div class="col-md-4">
+                {% for user in user %}
+                {% if user.profile_pic.url %}
+                <img src="{{user.profile_pic.url}}" class="profilepic">
+                {% else %}
+                <img src="../../static/Images/altprofilepic.jpg" class="profilepic">
+                {% endif %}
+                <p>{{user.bio}}</p>
 
-            {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="col-md-8">
+                <div>
+                    <form method="POST" action=" ">
+                        {% csrf_token %}
+                        <button type="submit" name="follow" value="{{user.id}}">Follow</button>
+                        <br>
+                        {{total_followers}} - followers
+                    </form>                    
+                </div>
+                <div>
+                    {% for user in user %}
+                    <button class="btn btn success"><a href="{% url 'editprofile' user.id %}">Edit Profile</a></button>
+                    {% endfor %}
+                </div>
+            </div>
+
 
         </div>
         <div class="col-md-2"></div>

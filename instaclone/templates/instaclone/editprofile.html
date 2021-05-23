@@ -1,0 +1,19 @@
+{% extends 'instaclone/base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+        </div>
+        <div class="col-md-4"> </div>
+    </div>
+</div>
+
+{% endblock %}
