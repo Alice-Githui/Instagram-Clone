@@ -217,3 +217,11 @@ h1{
 .imagecontent{
     padding: 0px 30px 30px 30px;
 }
+
+#profilepage{
+    background-color: #f9f9f9;
+    height: 100vh;
+}
+#profilepagedetails{
+    margin-top: 30px;
+}
