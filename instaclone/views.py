@@ -5,7 +5,7 @@ from .forms import RegistrationForm, NewImageForm, ImageCommentForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .emails import send_welcome_email
-from .models import Image, Comment, Profile
+from .models import Image, Comment, Profile, User
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 # def index(request):
@@ -13,9 +13,10 @@ from django.contrib.auth.decorators import login_required
 
 def homepage(request):
     images=Image.objects.all()
-    # likesonimage=get_object_or_404(Image, id=pk)
-    # total_likes=likesonimage.total_likes()
-    return render(request, 'instaclone/index.html', {"images": images})
+    users=User.objects.all()
+    print(users)
+    
+    return render(request, 'instaclone/index.html', {"images":images, "users":users})
 
 def registerUser(request):
     form=RegistrationForm()
@@ -105,5 +106,4 @@ def viewPhoto(request, pk):
     else:
         form=ImageCommentForm()
     return render(request, 'instaclone/oneimage.html', {"image": image, "form":form, "all_comments": all_comments,"total_likes": total_likes})
-
 

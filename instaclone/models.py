@@ -4,20 +4,12 @@ from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
 # Create your models here.
-
 class Profile(models.Model):
-    profile_name=models.CharField(max_length=80, null=True)
-    profile_photo=CloudinaryField('image')    
-    bio=models.CharField(max_length=200)
+    user=models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    bio=models.CharField(max_length=450)
 
     def __str__(self):
         return self.bio
-
-    def save_profile(self):
-        self.save()
-
-    def delete_profile(self):
-        self.delete()
 
 class Comment(models.Model):
     comment=models.CharField(max_length=500)
