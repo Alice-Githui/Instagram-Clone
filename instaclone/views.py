@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
-from .forms import RegistrationForm, NewImageForm, ImageCommentForm
+from .forms import RegistrationForm, NewImageForm, ImageCommentForm, UpdateUserProfile
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .emails import send_welcome_email
@@ -108,7 +108,20 @@ def viewPhoto(request, pk):
 
 @login_required
 def profile_view(request, pk):
+    form=UpdateUserProfile()
     user=Profile.objects.filter(id=pk)
 
-    return render(request, "instaclone/profile.html", {"user":user})
+    if request.method =="POST":
+        form=UpdateUserProfile(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('userprofile')
+
+    else:
+        form=UpdateUserProfile()
+    
+
+    return render(request, "instaclone/profile.html", {"user":user, "form":form})
 

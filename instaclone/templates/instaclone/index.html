@@ -3,37 +3,43 @@
 {% load static %}
 {% block content %}
 {% include 'navbar.html' %}
-<div class="container-fluid" style="background-color: beige;">
-    
+<div class="container-fluid" style="background-color: #f9f9f9;">
+
     <div class="row">
         <div class="col-md-2"></div>
 
         <div class="col-md-7">
-                     
             {% for image in images %}
-            <div>
-                <img src="{{image.profile.profile.profile_pic.url}}" id="profilepic" class="">
-                <p>Profile: <a href="{% url 'userprofile' user.id %}">{{image.profile.profile.user}}</a></p>
-               
-            </div>  
-            <div class="viewimage">
-                <a href="{% url 'viewphoto' image.id %}"><img src="{{image.image.url}}" alt="{{image.image_name}}" class="img-responsive"></a>
-            </div>
-            <br>
-                       
-            <div>
-                {{image.caption}}
-            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: white;">
+                    <div>
+                        <img src="{{image.profile.profile.profile_pic.url}}" id="profilepic" class="">
+                        <p>Profile: <a href="{% url 'userprofile' user.id %}">{{image.profile.profile.user}}</a></p>
 
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="viewimage">
+                        <a href="{% url 'viewphoto' image.id %}"><img src="{{image.image.url}}"
+                                alt="{{image.image_name}}" class="img-responsive"></a>
+                    </div>
+                    <br>
+
+                    <div>
+                        {{image.caption}}
+                    </div>
+                </div>
+
+            </div>
             {% endfor %}
-           
+
         </div>
 
         <div class="col-md-3">
-           <p>OTHER USER PROFILES</p>
-           {% for user in users %}
-           <p>{{user.username}}</p>
-           {% endfor %}
+            <p>OTHER USER PROFILES</p>
+            {% for user in users %}
+            <p>{{user.username}}</p>
+            {% endfor %}
         </div>
     </div>
 </div>
