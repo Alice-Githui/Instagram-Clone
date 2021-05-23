@@ -9,6 +9,12 @@
     background-color: white;
 }
 
+#profilepic{
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+}
+
 .wrapper-small{
     background-color: white;
 }

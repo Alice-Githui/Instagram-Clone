@@ -12,8 +12,10 @@
                      
             {% for image in images %}
             <div>
-                <p>Profile: <a href="#">{{image.profile}}</a></p>
-            </div>   
+                <img src="{{image.profile.profile.profile_pic.url}}" id="profilepic" class="">
+                <p>Profile: <a href="#">{{image.profile.profile.user}}</a></p>
+               
+            </div>  
             <div class="viewimage">
                 <a href="{% url 'viewphoto' image.id %}"><img src="{{image.image.url}}" alt="{{image.image_name}}" class="img-responsive"></a>
             </div>

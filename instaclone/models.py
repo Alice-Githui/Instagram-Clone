@@ -5,11 +5,12 @@ from tinymce.models import HTMLField
 
 # Create your models here.
 class Profile(models.Model):
-    user=models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    user=models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio=models.CharField(max_length=450)
+    profile_pic=CloudinaryField('image')
 
     def __str__(self):
-        return self.bio
+        return str(self.user)
 
 class Comment(models.Model):
     comment=models.CharField(max_length=500)

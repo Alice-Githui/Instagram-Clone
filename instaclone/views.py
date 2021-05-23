@@ -94,7 +94,6 @@ def viewPhoto(request, pk):
     likesonimage=get_object_or_404(Image, id=pk)
     total_likes=likesonimage.total_likes()
    
-    print(all_comments)
     if request.method == "POST":
         form=ImageCommentForm(request.POST)
 
