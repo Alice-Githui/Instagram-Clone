@@ -110,6 +110,7 @@ def viewPhoto(request, pk):
 def profile_view(request, pk):
     form=UpdateUserProfile()
     user=Profile.objects.filter(id=pk)
+    images=Image.objects.filter(profile_id=pk)
     # print(user)
 
     if request.method =="POST":
@@ -124,5 +125,5 @@ def profile_view(request, pk):
         form=UpdateUserProfile()
     
 
-    return render(request, "instaclone/profile.html", {"user":user, "form":form})
+    return render(request, "instaclone/profile.html", {"user":user, "form":form, "images":images})
 
