@@ -30,10 +30,6 @@
                         <img src="../../static/Images/altprofilepic.jpg"
                             alt="phone displaying the name instagram on a blue screen" class="profilepic">
                         {% endif %}
-                        <p>Profile Name: <a
-                                href="{% url 'userprofile' image.profile.profile.id %}">{{image.profile.profile.user}}</a>
-                        </p>
-
                     </div>
                 </div>
                 <div class="panel-body">
@@ -56,10 +52,10 @@
         </div>
 
         <div class="col-md-3 otherprofiles">
-            <p>OTHER USER PROFILES</p>
+            <!-- <p>OTHER USER PROFILES</p>
             {% for user in users %}
             <p>{{user.username}}</p>
-            {% endfor %}
+            {% endfor %} -->
         </div>
     </div>
 </div>

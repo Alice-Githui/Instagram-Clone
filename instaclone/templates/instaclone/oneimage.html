@@ -24,7 +24,12 @@
 
                 </div>
                 {% for comment in all_comments %}
-                {{comment.comment}}
+                <ul>
+                    <li>
+                        {{comment.comment}}
+                    </li>
+                </ul>
+                
                 {% endfor %}
                 <form method="post" enctype="multipart/form-data" action="{% url 'viewphoto' image.pk %}">
                     {% csrf_token %}

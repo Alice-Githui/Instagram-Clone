@@ -13,7 +13,7 @@
 <body>
     <div id="navbar">
         <nav class="navbar fixed-top navbar-light bg-light">
-            <a class="navbar-brand" href="{% url 'homepage' %}" style="font-size: 28px; color: black;">Instaclone</a>
+            <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 28px; color: black;">Instaclone</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-4 col-sm-4 navbar-right">
                 <div class="wrapper small">
-                    <button class="navbutton"><a href="{% url 'homepage'%}"><i class="fa fa-home"></i></a></button>
+                    <button class="navbutton"><a href="{% url 'home'%}"><i class="fa fa-home"></i></a></button>
                     <button class="navbutton"><a href="{% url 'uploadimage' %}"><i
                                 class="fa fa-plus-square"></i></a></button>
                     <button class="navbutton"><a href="#"><i class="fa fa-heart"></i></a></button>
@@ -50,7 +50,7 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{%url 'userprofile' user.id%}">View Profile</a>
+                                    <a href="#">View Profile</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'editprofile' user.id%}">Edit Profile</a>

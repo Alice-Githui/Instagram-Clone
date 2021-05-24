@@ -1,22 +1,29 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
-from .forms import RegistrationForm, NewImageForm, ImageCommentForm, UpdateUserProfile
+from .forms import RegistrationForm, NewImageForm, UpdateUserProfile, ImageCommentForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .emails import send_welcome_email
-from .models import Image, Comment, Profile, User
+from .models import Image, Profile, User, Comment
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 # def index(request):
 #     return render(request, 'registration/login.html', {})
 
-def homepage(request):
+def home(request):
     images=Image.objects.all()
-    users=User.objects.all()
-    print(users)
+    print(images)
+
+    return render(request, 'instaclone/index.html', {"images":images})
+
+# def homepage(request):
+#     image=Image.objects.all()
+#     print(image)
+#     # users=User.objects.all()
+#     # print(users)
     
-    return render(request, 'instaclone/index.html', {"images":images, "users":users})
+#     return render(request, 'instaclone/index.html', {"image":image})
 
 def registerUser(request):
     form=RegistrationForm()
@@ -46,7 +53,7 @@ def loginUser(request):
             if user is not None:
                 login(request, user)
 
-                return redirect('homepage')
+                return redirect('home')
 
             else:
                 messages.error(request, "Username or Password is incorrect")
@@ -72,7 +79,7 @@ def new_image(request):
             image.profile=current_user
             image.save()
 
-        return redirect('homepage')
+        return redirect('home')
 
     else:
         form=NewImageForm()
@@ -86,14 +93,14 @@ def likes(request, pk):
 def followers(request, pk):
     follow=get_object_or_404(Profile, id=request.POST.get('follow'))
     follow.followers.add(request.user)
-    return redirect('homepage')
+    return redirect('home')
 
 @login_required
 def viewPhoto(request, pk):
     image=Image.objects.get(id=pk)  
     form=ImageCommentForm()
     
-    all_comments=Comment.objects.filter(id=pk)
+    all_comments=Comment.objects.all()
     print(all_comments)
 
     likesonimage=get_object_or_404(Image, id=pk)
