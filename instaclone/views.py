@@ -81,7 +81,7 @@ def new_image(request):
 def likes(request, pk):
     imagelike=get_object_or_404(Image, id=request.POST.get('likebutton'))
     imagelike.likes.add(request.user)
-    return redirect('homepage')
+    return HttpResponseRedirect(reverse('viewphoto', args=[str(pk)]))
 
 def followers(request, pk):
     follow=get_object_or_404(Profile, id=request.POST.get('follow'))
@@ -93,7 +93,8 @@ def viewPhoto(request, pk):
     image=Image.objects.get(id=pk)  
     form=ImageCommentForm()
     
-    all_comments=Comment.objects.filter(id=pk).all()
+    all_comments=Comment.objects.filter(id=pk)
+    print(all_comments)
 
     likesonimage=get_object_or_404(Image, id=pk)
     total_likes=likesonimage.total_likes()
@@ -104,7 +105,7 @@ def viewPhoto(request, pk):
         if form.is_valid():
             form.save()
 
-            return redirect('homepage')
+            return HttpResponseRedirect(reverse('viewphoto', args=[str(pk)]))
 
     else:
         form=ImageCommentForm()

@@ -4,23 +4,41 @@
 {% block content %}
 {% include 'navbar.html' %}
 <div class="container-fluid">
-        <div class="row search-content">
-            {% if articles %}
-            <h4>Found {{articles|length}} of {{message}}</h4>
-            {% else %}
-            <h4>Found 0 images of the {{message}}</h4>
-            {%endif%}
-        </div>
-        <div class="row search-img">
-            {% if articles %}
-            {% for article in articles %}
-            <div class="col-md-4 image-card">
-                <img src="{{ article.image.url }}" alt="{{ article.description }}" class="img-responsive">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                {% if articles %}
+                {% for article in artiles %}
+                <div>
+                    <img src="{{article.profile.profile.profile_pic.url}}">
+                </div>
+
+                {% endfor %}
+                {% endif %}
             </div>
-            {% endfor %} 
-            {% endif %}      
-    
+            <div class="row search-content">
+                {% if articles %}
+                <h4>Found {{articles|length}} of {{message}}</h4>
+                {% else %}
+                <h4>Found 0 images of the {{message}}</h4>
+                {%endif%}
+            </div>
+            <div class="row search-img">
+                {% if articles %}
+                {% for article in articles %}
+                <div class="col-md-4 image-card">
+                    <img src="{{ article.image.url }}" alt="{{ article.description }}" class="img-responsive">
+                </div>
+                {% endfor %}
+                {% endif %}
+
+            </div>
+
         </div>
+        <div class="col-md-2"></div>
+    </div>
+
 </div>
 
 {% endblock %}
