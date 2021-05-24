@@ -29,7 +29,7 @@ BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 MODE=config("MODE",default="dev")
-SECRET_KEY =config('SECRET_KEY')
+SECRET_KEY="django-insecure-r8*q+-f3r!bb^$l5$$tv^al6n9s7igx7a#!(0%%k*3h!ixgz1j"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =config("DEBUG",default=False,cast=bool)
@@ -163,12 +163,6 @@ cloudinary.config(
     api_key='156367496441819',
     api_secret='r2kdLG-DQFGEMGmnU50SVP9Nrko',
 )
-#Email Configurations
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
