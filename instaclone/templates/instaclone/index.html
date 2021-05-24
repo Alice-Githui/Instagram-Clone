@@ -9,7 +9,18 @@
         <div class="col-md-2"></div>
 
         <div class="col-md-7">
-            {% for image in images %}
+        <div class="image-stories">
+            <img src="../../static/Images/stories/no1.jpg" alt="user stories">
+            <img src="../../static/Images/stories/no2.jpg" alt="second user stories">
+            <img src="../../static/Images/stories/no3.jpeg" alt="third user - user stories">
+            <img src="../../static/Images/stories/no4.jpeg" alt="fourth user-user stories">
+            <img src="../../static/Images/stories/no5.jpeg" alt="fifth user stories">
+            <img src="../../static/Images/stories/no6.jpeg" alt="sixth-user-story">
+            <img src="../../static/Images/stories/no7.jpeg" alt="seventh-user-story">
+            <img src="../../static/Images/stories/no8.jpeg" alt="eighth-user-story"> 
+        </div>
+        <div>
+        {% for image in images %}
             <div class="panel panel-default panel-images">
                 <div class="panel-heading" style="background-color: white;">
                     <div>
@@ -39,6 +50,8 @@
 
             </div>
             {% endfor %}
+        </div>
+            
 
         </div>
 

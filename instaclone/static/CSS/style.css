@@ -146,7 +146,7 @@ h1{
 }
 
 .panel-images{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .otherprofiles{
@@ -233,4 +233,15 @@ h1{
 
 .regform label input{
     border: none;
+}
+
+.image-stories img{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border: 1px dotted red;
+}
+
+.image-stories{
+    margin-top: 30px;
 }
