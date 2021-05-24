@@ -94,7 +94,7 @@ def likes(request, pk):
 def followers(request, pk):
     follow=get_object_or_404(Profile, id=request.POST.get('follow'))
     follow.followers.add(request.user)
-    return redirect('home')
+    return HttpResponseRedirect(reverse('userprofile', args=[str(pk)]))
 
 @login_required
 def viewPhoto(request, pk):
