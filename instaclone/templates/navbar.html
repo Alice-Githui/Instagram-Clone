@@ -50,7 +50,7 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="#">View Profile</a>
+                                    <a href="{% url 'userprofile' user.id %}">View Profile</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'editprofile' user.id%}">Edit Profile</a>
