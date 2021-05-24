@@ -53,8 +53,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',    
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'Instagram.wsgi.application'
 if config('MODE')=="dev":
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': config('DB_NAME'),
             'USER': config('DB_USER'),
             'PASSWORD':config('DB_PASSWORD'),
             'HOST':config("DB_HOST"),
-            'PORT':''
+            'PORT':'',
         }
     }
 #production
@@ -156,6 +156,9 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR, "static"),
 ]
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
 cloudinary.config(
     cloud_name='letewaa',
