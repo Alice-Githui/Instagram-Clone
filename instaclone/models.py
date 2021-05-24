@@ -60,7 +60,7 @@ class Image(models.Model):
         self.save(caption)
 
     def search_by_user(profile):
-        images=Image.objects.filter(profile=profile)
+        images=Image.objects.filter(profile__username=profile)
         # print(images)
         return images
 
