@@ -26,6 +26,7 @@ To acquire a local copy:
 - Run the app by running python manage.py runserver command to view the app
 
 ## Known Bugs
+Comments are not filtered per image
 
 
 ## License
